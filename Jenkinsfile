@@ -1,7 +1,8 @@
 pipeline {
     agent any
-      }
-
+    triggers {
+        pollSCM '* * * * *'
+    }
     stages {
         stage('Build') {
             steps {
@@ -18,7 +19,7 @@ pipeline {
                 sh '''
                 cd myapp
                 python3 hello.py
-                python3 hello.py --name=Tim
+                python3 hello.py --name=Tim --num1=2 --num2=2
                 '''
             }
         }
